@@ -5,9 +5,9 @@ const TrafficLight = () => {
 
   useEffect(() => {
     const lightDurations = {
-      red: 1 * 60 * 1000, 
-      green: 1 * 60 * 1000,
-      yellow: 1* 60 * 1000,
+      red: 15 * 1000,
+      green: 15 * 1000,
+      yellow: 3 * 1000,
     };
 
     const changeLight = () => {
@@ -22,29 +22,31 @@ const TrafficLight = () => {
       changeLight();
     }, lightDurations[activeLight]);
 
-    return () => clearTimeout(timeout); 
+    return () => clearTimeout(timeout);
   }, [activeLight]);
 
   return (
-    <div style={styles.container}>
-      <div
-        style={{
-          ...styles.light,
-          backgroundColor: activeLight === "red" ? "red" : "gray",
-        }}
-      />
-      <div
-        style={{
-          ...styles.light,
-          backgroundColor: activeLight === "yellow" ? "yellow" : "gray",
-        }}
-      />
-      <div
-        style={{
-          ...styles.light,
-          backgroundColor: activeLight === "green" ? "green" : "gray",
-        }}
-      />
+    <div style={styles.main_container}>
+      <div style={styles.container}>
+        <div
+          style={{
+            ...styles.light,
+            backgroundColor: activeLight === "red" ? "red" : "gray",
+          }}
+        />
+        <div
+          style={{
+            ...styles.light,
+            backgroundColor: activeLight === "yellow" ? "yellow" : "gray",
+          }}
+        />
+        <div
+          style={{
+            ...styles.light,
+            backgroundColor: activeLight === "green" ? "green" : "gray",
+          }}
+        />
+      </div>
     </div>
   );
 };
@@ -60,6 +62,10 @@ const styles = {
     backgroundColor: "black",
     borderRadius: "20px",
     padding: "10px",
+  },
+  main_container: {
+    display: "flex",
+    justifyContent: "center",
   },
   light: {
     width: "60px",
